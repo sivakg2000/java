@@ -1,0 +1,7 @@
+package com.siva.apps.practice.dp;
+
+public class Main {
+public static void main(String args[]) {
+	System.out.println("Welcome Design Patter Example");
+}
+}
