@@ -3,7 +3,7 @@ package com.siva.apps.practice.java8;
 import java.util.Arrays;
 import java.util.List;
 
-public class Day1 {
+public class MaxEvenNumber {
     public static void main(String[] args){
 
         List<Integer> mainList= Arrays.asList(1,3,78,108);
