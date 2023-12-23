@@ -11,13 +11,13 @@ public class AvgLenString {
         List<String> words = Arrays.asList("Java", "C", "Python", "Javascript", "Ruby", "Julia");
 
 
-        OptionalDouble result=new AvgLenString().find(words);
+        double result=new AvgLenString().find(words);
         System.out.println(result);
 
 
     }
 
-    public OptionalDouble find(List<String> list){
-        return list.stream().map(String::length).mapToDouble(Integer::doubleValue).average();
+    public double find(List<String> list){
+        return list.stream().mapToDouble(String::length).average().orElse(0.0);
     }
 }
