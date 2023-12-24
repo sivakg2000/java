@@ -40,7 +40,7 @@ public class PrimeNumberTest {
     @Test
     public  void  findPrime3(){
 
-        List<Integer> numbers = Collectpions.singletonList(15);
+        List<Integer> numbers = Collections.singletonList(15);
         List<Integer> expRes = Collections.emptyList();
 
         List<Integer> result=new PrimeNumber().find(numbers);
