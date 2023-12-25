@@ -15,7 +15,7 @@ public class SecondSmallestNumberTest {
     public void find(){
             List<Integer> numbers = Arrays.asList(10, 5, 8, 2,3, 12, 7);
             int result=new SecondSmallestNumber().find(numbers);
-            Assertions.assertEquals(result,3);
+            Assertions.assertEquals(3,result);
     }
 
 
@@ -23,7 +23,7 @@ public class SecondSmallestNumberTest {
     public void findNegativeNumber(){
         List<Integer> numbers = Arrays.asList(10, 5, 8, -2,-3, 12, 7);
         int result=new SecondSmallestNumber().find(numbers);
-        Assertions.assertEquals(result,-2);
+        Assertions.assertEquals(-2,result);
     }
 
 
@@ -31,7 +31,7 @@ public class SecondSmallestNumberTest {
     public void findNegativeNumberAndPossitive(){
         List<Integer> numbers = Arrays.asList(10, 5, 8, -2, 12, 7);
         int result=new SecondSmallestNumber().find(numbers);
-        Assertions.assertEquals(result,5);
+        Assertions.assertEquals(5,result);
     }
 
 

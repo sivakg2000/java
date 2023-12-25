@@ -13,7 +13,7 @@ public class NumCharMap {
 
     }
 
-    public Map find(String str){
+    public Map<Character,Integer> find(String str){
 
         Map<Character,Integer> rVal=new HashMap<>();
         str.chars().mapToObj(c->(char)c).forEach(c->rVal.put(c,rVal.getOrDefault(c,0)+1));

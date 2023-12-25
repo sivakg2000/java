@@ -18,7 +18,7 @@ public class IntMergeListTest {
 
         List<Integer> mList=new IntMergeList().merge(list1,list2);
 
-        assertEquals(mList,rList);
+        assertEquals(rList,mList);
 
 
     }
@@ -35,7 +35,7 @@ public class IntMergeListTest {
 
         List<Integer> mList=new IntMergeList().merge(list1,list2);
 
-        assertEquals(mList,rList);
+        assertEquals(rList,mList);
 
 
     }

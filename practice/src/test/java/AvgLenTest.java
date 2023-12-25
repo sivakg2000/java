@@ -12,7 +12,7 @@ public class AvgLenTest {
     public void findAvgLen(){
         List<String> words = Arrays.asList("Java", "C", "Python", "Javascript", "Ruby", "Julia");
         double result=new AvgLenString().find(words);
-        assertEquals(result,5.0);
+        assertEquals(5.0,result);
     }
 
 
@@ -20,7 +20,7 @@ public class AvgLenTest {
     public void findAvgLen2() {
         List<String> words1 = Arrays.asList("Hello", "World", "Java", "Stream", "Example");
         double result=new AvgLenString().find(words1);
-        assertEquals(result,5.4);
+        assertEquals(5.4,result);
     }
 
 
@@ -30,13 +30,13 @@ public class AvgLenTest {
         List<String> words2 = Arrays.asList("OpenAI", "GPT", "Machine", "Learning", "NLP", "Artificial", "Intelligence");
 
         double result=new AvgLenString().find(words2);
-        assertEquals(result,7.0);
+        assertEquals(7.0,result);
     }
 
     @Test
     public void findAvgLenEmpty(){
         List<String> words = Collections.emptyList();
         double result=new AvgLenString().find(words);
-        assertEquals(result,0.0);
+        assertEquals(0.0,result);
     }
 }

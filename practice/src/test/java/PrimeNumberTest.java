@@ -15,7 +15,7 @@ public class PrimeNumberTest {
         List<Integer> expRes = Arrays.asList(2, 7, 23,31,17);
 
         List<Integer> result=new PrimeNumber().find(numbers);
-        assertEquals(result,expRes);
+        assertEquals(expRes,result);
 
 
     }
@@ -29,7 +29,7 @@ public class PrimeNumberTest {
         List<Integer> expRes = Arrays.asList(2, 7,31);
 
         List<Integer> result=new PrimeNumber().find(numbers);
-        assertEquals(result,expRes);
+        assertEquals(expRes,result);
 
 
     }
@@ -44,7 +44,7 @@ public class PrimeNumberTest {
         List<Integer> expRes = Collections.emptyList();
 
         List<Integer> result=new PrimeNumber().find(numbers);
-        assertEquals(result,expRes);
+        assertEquals(expRes,result);
 
 
     }

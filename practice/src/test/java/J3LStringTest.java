@@ -13,7 +13,7 @@ public class J3LStringTest {
         List<String> words = Arrays.asList("Java", "C", "Python", "Javascript", "Ruby","Jub", "Julia");
         List<String> testResult = Collections.singletonList("Jub");
         List<String> result=new J3LString().find(words);
-        assertEquals(result,testResult);
+        assertEquals(testResult,result);
 
     }
 
@@ -23,7 +23,7 @@ public class J3LStringTest {
         List<String> words = Arrays.asList("Java", "C", "Python", "Javascript", "Ruby", "Julia");
         List<String> testResult = Collections.emptyList();
         List<String> result=new J3LString().find(words);
-        assertEquals(result,testResult);
+        assertEquals(testResult,result);
 
     }
 
@@ -33,7 +33,7 @@ public class J3LStringTest {
         List<String> words = Arrays.asList("Java", "C", "Python", "Javascript", "Ruby", "Jub","Jka","Julia");
         List<String> testResult =Arrays.asList("Jub","Jka");
         List<String> result=new J3LString().find(words);
-        assertEquals(result,testResult);
+        assertEquals(testResult,result);
 
     }
 
