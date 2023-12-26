@@ -17,7 +17,7 @@ public class MinMaxDouble {
 
     }
 
-    static class MinMaxResult{
+    public static class MinMaxResult{
         Double minVal;
         Double maxVal;
         public MinMaxResult(Double minVal,Double maxVal){
