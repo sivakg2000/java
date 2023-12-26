@@ -13,8 +13,8 @@ public class SumSqureEvenNumbers {
     }
 
     public int find(List<Integer> list){
-        return list.stream().filter(num->num%2==0).map(n->n*n).mapToInt(v->v).sum();
-         
+        return list.stream().filter(num->num%2==0).mapToInt(n->n*n).sum();
+
     }
 
 }
