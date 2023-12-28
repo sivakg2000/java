@@ -14,6 +14,6 @@ public class Len5UpperCase {
     }
 
     public List<String> find(List<String> list){
-        return list.stream().filter(word->word.length()>5).map(String::toUpperCase).collect(Collectors.toList());
+        return list.stream().filter(word->word.length()>=5).map(String::toUpperCase).collect(Collectors.toList());
     }
 }

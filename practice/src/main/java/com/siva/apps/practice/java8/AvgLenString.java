@@ -9,8 +9,6 @@ public class AvgLenString {
     public static void  main(String[] args){
 
         List<String> words = Arrays.asList("Java", "C", "Python", "Javascript", "Ruby", "Julia");
-
-
         double result=new AvgLenString().find(words);
         System.out.println(result);
 
