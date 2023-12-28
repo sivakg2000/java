@@ -1,6 +1,7 @@
 package com.siva.apps.practice.ems;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Application {
@@ -18,5 +19,30 @@ public class Application {
         employees.forEach(System.out::println);
 
 
+
+        new Application().getEmployeeListSalary50K(employees);
+        new Application().getEmployeeListSortBySalary(employees);
+
     }
+
+
+    public void getEmployeeListSalary50K(List<Employee> list){
+        System.out.println("---------50K> Start -----------");
+        list.stream().filter(emp->emp.salary>50000).forEach(System.out::println);
+        System.out.println("---------50K> End -----------");
+
+    }
+
+
+    public void getEmployeeListSortBySalary(List<Employee> list){
+
+
+
+        System.out.println("---------Sort By Salary> Start -----------");
+        list.stream().sorted(Comparator.comparing(o ->  o.salary)).forEach(System.out::println);
+        System.out.println("---------Sort By Salary> End -----------");
+
+    }
+
+
 }
