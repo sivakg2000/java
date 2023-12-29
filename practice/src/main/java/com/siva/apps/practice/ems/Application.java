@@ -59,4 +59,29 @@ public class Application {
     }
 
 
+
+    public void getEmployeeAvgAge(List<Employee> list){
+
+
+
+        System.out.println("--------- Avg Age > Start -----------");
+        System.out.println(list.stream().mapToInt(Employee::getAge).average());
+        System.out.println("--------- Avg Age> End -----------");
+
+    }
+
+
+
+    public void getEmployeeAvgSalary(List<Employee> list){
+
+
+
+        System.out.println("--------- Avg Salary > Start -----------");
+        System.out.println(list.stream().mapToDouble(Employee::getSalary).average());
+        System.out.println("--------- Avg Salary> End -----------");
+
+    }
+
+
+
 }
