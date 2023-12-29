@@ -3,6 +3,7 @@ package com.siva.apps.practice.ems;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Application {
     public static void main(String[] args){
@@ -18,10 +19,11 @@ public class Application {
 
         employees.forEach(System.out::println);
 
+        Application app=new Application();
 
-
-        new Application().getEmployeeListSalary50K(employees);
-        new Application().getEmployeeListSortBySalary(employees);
+        app.getEmployeeListSalary50K(employees);
+        app.getEmployeeListSortBySalary(employees);
+        app.getEmployeeListGroupByDepartment(employees);
 
     }
 
@@ -41,6 +43,18 @@ public class Application {
         System.out.println("---------Sort By Salary> Start -----------");
         list.stream().sorted(Comparator.comparing(o ->  o.salary)).forEach(System.out::println);
         System.out.println("---------Sort By Salary> End -----------");
+
+    }
+
+
+
+    public void getEmployeeListGroupByDepartment(List<Employee> list){
+
+
+
+        System.out.println("--------- Group By Department> Start -----------");
+        list.stream().collect(Collectors.groupingBy(Employee::getDepartment)).forEach((k,v)->System.out.println(k+" : "+v));
+        System.out.println("---------Group By Department> End -----------");
 
     }
 
