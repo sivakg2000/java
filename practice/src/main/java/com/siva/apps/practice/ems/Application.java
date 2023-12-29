@@ -24,6 +24,8 @@ public class Application {
         app.getEmployeeListSalary50K(employees);
         app.getEmployeeListSortBySalary(employees);
         app.getEmployeeListGroupByDepartment(employees);
+        app.getEmployeeAvgAge(employees);
+        app.getEmployeeAvgSalary(employees);
 
     }
 
@@ -65,7 +67,7 @@ public class Application {
 
 
         System.out.println("--------- Avg Age > Start -----------");
-        System.out.println(list.stream().mapToInt(Employee::getAge).average());
+        System.out.println(list.stream().mapToInt(Employee::getAge).average().orElse(0.0));
         System.out.println("--------- Avg Age> End -----------");
 
     }
@@ -77,7 +79,7 @@ public class Application {
 
 
         System.out.println("--------- Avg Salary > Start -----------");
-        System.out.println(list.stream().mapToDouble(Employee::getSalary).average());
+        System.out.println(list.stream().mapToDouble(Employee::getSalary).average().orElse(0.0));
         System.out.println("--------- Avg Salary> End -----------");
 
     }
