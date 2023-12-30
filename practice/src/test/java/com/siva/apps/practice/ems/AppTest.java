@@ -27,7 +27,7 @@ public class AppTest {
     @Test
     public void getEmployeeListSortBySalary(){
 
-        List<Employee> rList=app.getEmployeeListSortBySalary(list); 
+        List<Employee> rList=app.getEmployeeListSortBySalary(list);
         Assertions.assertEquals(48000,rList.get(0).salary);
     }
 
