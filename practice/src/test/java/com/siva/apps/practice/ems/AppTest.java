@@ -1,5 +1,6 @@
 package com.siva.apps.practice.ems;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -20,6 +21,14 @@ public class AppTest {
         List<Employee> rList=app.getEmployeeListSalary50K(list);
         assertTrue(rList.get(0).salary>50000);
 
+    }
+
+
+    @Test
+    public void getEmployeeListSortBySalary(){
+
+        List<Employee> rList=app.getEmployeeListSortBySalary(list); 
+        Assertions.assertEquals(48000,rList.get(0).salary);
     }
 
 

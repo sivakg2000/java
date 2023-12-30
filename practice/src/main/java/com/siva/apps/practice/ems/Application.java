@@ -18,7 +18,13 @@ public class Application {
         System.out.println("---------50K> Start -----------");
         app.getEmployeeListSalary50K(employees).forEach(System.out::println);
         System.out.println("---------50K> End -----------");
-        app.getEmployeeListSortBySalary(employees);
+
+        System.out.println("---------Sort By Salary> Start -----------");
+        app.getEmployeeListSortBySalary(employees).forEach(System.out::println);
+        System.out.println("---------Sort By Salary> End -----------");
+
+
+
         app.getEmployeeListGroupByDepartment(employees);
         app.getEmployeeAvgAge(employees);
         app.getEmployeeAvgSalary(employees);
@@ -52,12 +58,10 @@ public class Application {
     }
 
 
-    public void getEmployeeListSortBySalary(List<Employee> list){
+    public List<Employee>  getEmployeeListSortBySalary(List<Employee> list){
 
 
-        System.out.println("---------Sort By Salary> Start -----------");
-        list.stream().sorted(Comparator.comparing(o ->  o.salary)).forEach(System.out::println);
-        System.out.println("---------Sort By Salary> End -----------");
+        return list.stream().sorted(Comparator.comparing(o ->  o.salary)).collect(Collectors.toList());
 
     }
 
