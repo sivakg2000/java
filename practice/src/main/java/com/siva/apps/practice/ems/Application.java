@@ -15,7 +15,9 @@ public class Application {
 
         List<Employee> employees=app.intEmployeeList();
         employees.forEach(System.out::println);
-        app.getEmployeeListSalary50K(employees);
+        System.out.println("---------50K> Start -----------");
+        app.getEmployeeListSalary50K(employees).forEach(System.out::println);
+        System.out.println("---------50K> End -----------");
         app.getEmployeeListSortBySalary(employees);
         app.getEmployeeListGroupByDepartment(employees);
         app.getEmployeeAvgAge(employees);
@@ -43,9 +45,9 @@ public class Application {
 
     public List<Employee> getEmployeeListSalary50K(List<Employee> list){
 
-        System.out.println("---------50K> Start -----------");
+
         return list.stream().filter(emp->emp.salary>50000).collect(Collectors.toList());
-       
+
 
     }
 
