@@ -13,7 +13,7 @@ public class GreaterAvgNumbers {
 
     public List<Integer> findList(List<Integer> list){
         double avg=list.stream().mapToInt(Integer::intValue).average().orElse(0.0);
-        System.out.println(avg);
+        //System.out.println(avg);
         return list.stream().filter(n->n>avg).collect(Collectors.toList());
     }
 }
