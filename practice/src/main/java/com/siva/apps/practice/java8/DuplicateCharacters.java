@@ -41,7 +41,7 @@ public class DuplicateCharacters {
         //System.out.println(characterLongMap);
         characterLongMap.forEach((k,v)->{
             if(v>1)
-            System.out.println(k+":"+v);
+                System.out.println(k+":"+v);
         });
         System.out.println();
         return false;
