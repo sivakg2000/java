@@ -7,8 +7,10 @@ public class CountUppercase {
         System.out.println(new CountUppercase().find(string1));
     }
 
-    public long find(String str){ 
-        return str.chars().filter(c->(c>=65 && c<91)).count();
+    public long find(String str){
+        //return str.chars().filter(c->(c>=65 && c<91)).count();
+
+        return str.chars().filter(Character::isUpperCase).count();
     }
 
 
