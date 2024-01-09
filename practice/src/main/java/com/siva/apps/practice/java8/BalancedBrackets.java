@@ -7,11 +7,11 @@ public class BalancedBrackets {
         String testString1 = "{[()()]}";
         String testString2 = "{[()]";
 
-        System.out.println("Is \"" + testString1 + "\" balanced? " + isBalanced(testString1));
-        System.out.println("Is \"" + testString2 + "\" balanced? " + isBalanced(testString2));
+        System.out.println("Is \"" + testString1 + "\" balanced? " + new BalancedBrackets().isBalanced(testString1));
+        System.out.println("Is \"" + testString2 + "\" balanced? " + new BalancedBrackets().isBalanced(testString2));
     }
 
-    private static boolean isBalanced(String testString1) {
+    public boolean isBalanced(String testString1) {
 
         Stack<Character> stack= new Stack<>();
 
