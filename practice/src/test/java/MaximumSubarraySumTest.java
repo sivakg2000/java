@@ -11,12 +11,24 @@ public class MaximumSubarraySumTest {
 
 
     @Test
-    public  void findMin(){
+    public  void find1(){
             int[] nums = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
             int maxSum = new MaximumSubarraySum().maxSubArray(nums);
             System.out.println("Maximum subarray sum: " + maxSum);
             assertEquals(maxSum,6);
 
     }
+
+
+    @Test
+    public  void find2(){
+        int[] nums =  {-2, -5, 6, -2, -3, 1, 5, -6};
+        int maxSum = new MaximumSubarraySum().maxSubArray(nums);
+        System.out.println("Maximum subarray sum: " + maxSum);
+        assertEquals(maxSum,7);
+
+    }
+
+
 }
 
