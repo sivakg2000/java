@@ -1,5 +1,9 @@
 package com.siva.apps.practice.java8;
 
+/**
+ * This program uses Kadane's algorithm to find the maximum subarray sum.
+ * It iterates through the array, keeping track of the current sum and the maximum sum encountered so far.
+ */
 public class MaximumSubarraySum {
     public static void main(String[] args) {
         int[] nums = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
