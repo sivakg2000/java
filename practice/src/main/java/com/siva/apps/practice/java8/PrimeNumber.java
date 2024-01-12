@@ -13,8 +13,10 @@ public class PrimeNumber {
         List<Integer> numbers = Arrays.asList(2, 7, 15, 23, 12, 31, 8, 17);
 
 
+        List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 
-        List<Integer> result=new PrimeNumber().find(numbers);
+
+        List<Integer> result=new PrimeNumber().find(list);
         System.out.println(result);
 
 
@@ -25,7 +27,7 @@ public class PrimeNumber {
     }
 
     public static boolean isPrime(int num){
-        if(num<1)
+        if(num<=1)
             return false;
         for(int i=2;i<Math.sqrt(num);i++){
             if(num%i==0)
