@@ -27,11 +27,27 @@ public class PrimeNumber {
     }
 
     public static boolean isPrime(int num){
-        if(num<=1)
+        if(num<=1) {
             return false;
-        for(int i=2;i<Math.sqrt(num);i++){
-            if(num%i==0)
+        }
+        for(int i=2;i<=Math.sqrt(num);i++){
+            System.out.println(num+" : "+i);
+            if(num%i==0) {
                 return false;
+            }
+        }
+        return true;
+    }
+
+    public static boolean isPrime2(int n) {
+        if (n <= 1) {
+            return false;
+        }
+        for (int i = 2; i <= Math.sqrt(n); i++) {
+            System.out.println(n+" : "+i);
+            if (n % i == 0) {
+                return false;
+            }
         }
         return true;
     }
