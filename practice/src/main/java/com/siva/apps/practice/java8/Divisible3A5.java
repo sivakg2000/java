@@ -11,6 +11,6 @@ public class Divisible3A5 {
  System.out.println(new Divisible3A5().find(100));
     }
     public List<Integer> find(int max){
-        return IntStream.range(1,max).filter(n-> n%3==0 && n%5==0).boxed().collect(Collectors.toList()); 
+        return IntStream.range(1,max).filter(n-> n%3==0 && n%5==0).boxed().collect(Collectors.toList());
     }
 }
