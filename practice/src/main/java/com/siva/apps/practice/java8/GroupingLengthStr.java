@@ -20,8 +20,7 @@ public class GroupingLengthStr {
             tList.add(word);
             map1.put(word.length(),tList);
         }
-        );
-        System.out.println(map1);
+        ); 
 
 
         System.out.println( l1.stream().collect(Collectors.groupingBy(String::length)));
