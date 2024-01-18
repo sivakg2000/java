@@ -18,8 +18,8 @@ public class TWOSum {
             for(int j=0;j<i;j++){
                 if(nums[i]+nums[j]==target){
                     System.out.println(i+">>"+j);
-                    ind[0]=i;
-                    ind[1]=j;
+                    ind[0]=j;
+                    ind[1]=i;
                 }
             }
         }
