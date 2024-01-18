@@ -27,4 +27,13 @@ public class BuySellStockTest {
     }
 
 
+    @Test
+    public void findProfitNeg(){
+        int[] prices = {7,2,5,3,6,4};
+        int expProf=3;
+        int pro=new BuySellStock().maxProfit(prices);
+        Assertions.assertNotEquals(expProf,pro);
+    }
+
+
 }
