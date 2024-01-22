@@ -24,6 +24,11 @@ public class ConsecIncSubSeq {
                 tmpList.add(list.get(i));
                 tmpList.add(list.get(i+1));
 
+                if(i+2<list.size() &&  list.get(i)+2==list.get(i+2)){
+                    tmpList.add(list.get(i+2));
+                }
+
+
                 fList.add(tmpList);
                 System.out.println(i+">>"+list.get(i));
             }
