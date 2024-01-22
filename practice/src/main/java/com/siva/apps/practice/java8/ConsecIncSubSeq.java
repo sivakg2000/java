@@ -16,7 +16,7 @@ public class ConsecIncSubSeq {
     public List<List<Integer>> find(List<Integer> list){
         List<List<Integer>> fList=new ArrayList<>();
 
-        for(int i=1;i<list.size()-1;i++){
+        for(int i=1;i<list.size()-1;i++){ 
 
             if(list.get(i)-1==list.get(i-1) && list.get(i)+1==list.get(i+1)){
                 List<Integer> tmpList=new ArrayList<>();
