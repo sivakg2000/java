@@ -3,6 +3,8 @@ package com.siva.apps.practice.java8;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.ConcurrentMap;
+import java.util.stream.Collectors;
 
 public class ConsecIncSubSeq {
 
@@ -13,7 +15,18 @@ public class ConsecIncSubSeq {
         System.out.println(new ConsecIncSubSeq().find(list1));
 
     }
+
+
     public List<List<Integer>> find(List<Integer> list){
+        List<List<Integer>> fList=new ArrayList<>();
+        ConcurrentMap<Object, List<Integer>> map=list.stream().collect(Collectors.groupingByConcurrent(i->i-list.indexOf(i)));
+        fList=map.values().stream().filter(s->s.size()>=3).collect(Collectors.toList());
+        System.out.println(map);
+
+        return fList;
+
+    }
+    public List<List<Integer>> find1(List<Integer> list){
         List<List<Integer>> fList=new ArrayList<>();
 
         for(int i=1;i<list.size()-1;i++){
