@@ -16,4 +16,23 @@ public class ConsecIncSubSeqTest {
         List<Integer> expRes= Arrays.asList(1, 2, 3);
         Assertions.assertEquals(expRes,result.get(0));
     }
+
+
+    @Test
+    public void find2(){
+
+        List<Integer> list1 = Arrays.asList(1, 2, 3, 5, 6, 7, 8, 10, 11,12);
+        List<List<Integer>> result=new ConsecIncSubSeq().find(list1);
+        List<Integer> expRes= Arrays.asList(5,6,7);
+        Assertions.assertEquals(expRes,result.get(0));
+    }
+
+    @Test
+    public void find3(){
+
+        List<Integer> list1 = Arrays.asList(1, 2, 3, 5, 6, 7, 8, 10, 11,12);
+        List<List<Integer>> result=new ConsecIncSubSeq().find(list1);
+        List<Integer> expRes= Arrays.asList(5,6,7,8);
+        Assertions.assertEquals(expRes,result.get(0));
+    }
 }
