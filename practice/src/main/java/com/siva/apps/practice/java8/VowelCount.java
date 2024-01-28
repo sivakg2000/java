@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 public class VowelCount {
 
     public static void  main(String[] args){
-        String input1 = "programming is fun"; 
+        String input1 = "programming is fun";
         new VowelCount().find(input1);
 
 
