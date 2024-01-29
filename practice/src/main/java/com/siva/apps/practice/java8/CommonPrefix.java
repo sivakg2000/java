@@ -29,7 +29,7 @@ public class CommonPrefix {
             }
 
             System.out.println(prefix +">>"+word+">>"+minL+">>"+comL);
-            return word;
+            return prefix.substring(0,comL);
         }).orElse("");
         return s;
     }
