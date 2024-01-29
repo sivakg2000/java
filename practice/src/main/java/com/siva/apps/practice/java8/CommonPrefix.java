@@ -22,7 +22,10 @@ public class CommonPrefix {
             int minL=Math.min(prefix.length(),word.length());
             int comL=0;
             for(int i=0;i<minL;i++){
-
+                if(prefix.charAt(i)!=word.charAt(i)){
+                    break;
+                }
+                comL++;
             }
 
             System.out.println(prefix +">>"+word+">>"+minL+">>"+comL);
