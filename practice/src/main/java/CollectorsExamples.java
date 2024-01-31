@@ -29,6 +29,25 @@ public class CollectorsExamples {
 
         System.out.println(result);
 
+        Map<Integer, List<String>> groupedByLength =  words.stream().collect(Collectors.groupingBy(String::length));
+        System.out.println(groupedByLength);
+
+
+        Map<Boolean, List<Integer>> partitioned = numbers.stream().collect(Collectors.partitioningBy(n -> n % 2 == 0));
+
+        System.out.println(partitioned);
+
+
+
+        long count = words.stream().filter(word -> word.length() > 5).collect(Collectors.counting());
+
+        System.out.println(count);
+
+
+        IntSummaryStatistics stats = words.stream().collect(Collectors.summarizingInt(String::length));
+
+        System.out.println(stats);
+
 
 
 
