@@ -16,6 +16,20 @@ public class CollectorsExamples {
 
         System.out.println(list);
 
+        Set<String> set = words.stream().filter(word->word.length()>5).collect(Collectors.toSet());
+
+        System.out.println(set);
+
+        Map<Integer, String> map = words1.stream().collect(Collectors.toMap(String::length, Function.identity()));
+
+        System.out.println(map);
+
+
+        String result =  words.stream().filter(word->word.length()>5).collect(Collectors.joining(", "));
+
+        System.out.println(result);
+
+
 
 
 
