@@ -7,7 +7,7 @@ public class CommonPrefix {
 
     public static void  main(String[] args){
 
-        List<String> words = Arrays.asList("pre", "prefix", "preposition", "prediction");
+        List<String> words = Arrays.asList("pref", "prefix", "preposition", "prediction");
         String result=new CommonPrefix().find(words);
         System.out.println(result);
 
