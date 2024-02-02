@@ -18,5 +18,7 @@ public class ConcatenateLists {
     public List<String> doConCat(List<String> l1,List<String> l2){
 
         return Stream.concat(l1.stream(),l2.stream()).collect(Collectors.toList());
+
+
     }
 }
