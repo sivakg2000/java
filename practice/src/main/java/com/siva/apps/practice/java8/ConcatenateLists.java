@@ -2,6 +2,8 @@ package com.siva.apps.practice.java8;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class ConcatenateLists {
 
@@ -15,6 +17,6 @@ public class ConcatenateLists {
 
     public List<String> doConCat(List<String> l1,List<String> l2){
 
-        return null;
+        return Stream.concat(l1.stream(),l2.stream()).collect(Collectors.toList());
     }
 }
