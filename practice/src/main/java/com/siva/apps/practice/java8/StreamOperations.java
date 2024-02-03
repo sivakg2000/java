@@ -15,6 +15,8 @@ public class StreamOperations {
         sOperation.predicateMethod(mainList);
         sOperation.lambdaExp(mainList);
 
+        sOperation.filter(mainList);
+
 
     }
 
@@ -30,7 +32,7 @@ public class StreamOperations {
     private void predicateMethod(List<Integer> mainList){
 
         System.out.println("predicateMethod");
-        boolean resGreater50=mainList.stream().anyMatch(new Predicate<Integer>() {
+        boolean resGreater50=mainList.stream().allMatch(new Predicate<Integer>() {
 
             @Override
             public boolean test(Integer integer) {
@@ -61,6 +63,15 @@ public class StreamOperations {
         boolean anyLessThan0=mainList.stream().anyMatch(i->i<0);
         System.out.println("anyLessThan0 :"+anyLessThan0);
 
+    }
+
+
+    private void filter(List<Integer> mainList){
+
+        Stream<Integer> f1=mainList.stream().filter(n->n<5);
+        System.out.println("LessThan5 :"+Arrays.toString(f1.toArray()));
+        long cVal=mainList.stream().filter(n->n<5).distinct().count();
+        System.out.println("LessThan5 Count :"+cVal);
     }
 
 }
