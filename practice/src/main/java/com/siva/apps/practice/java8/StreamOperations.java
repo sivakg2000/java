@@ -13,7 +13,7 @@ public class StreamOperations {
         StreamOperations sOperation=new StreamOperations();
         sOperation.countMethod(mainList);
         sOperation.predicateMethod(mainList);
-        //sOperation.lambdaExp(mainList);
+        sOperation.lambdaExp(mainList);
 
 
     }
@@ -51,5 +51,16 @@ public class StreamOperations {
 
 
 
+
+    private void lambdaExp(List<Integer> mainList){
+
+        System.out.println("lambdaExp");
+        boolean resGreater50=mainList.stream().anyMatch(i->i>50);
+
+        System.out.println("resGreater50 :"+resGreater50);
+        boolean anyLessThan0=mainList.stream().anyMatch(i->i<0);
+        System.out.println("anyLessThan0 :"+anyLessThan0);
+
+    }
 
 }
