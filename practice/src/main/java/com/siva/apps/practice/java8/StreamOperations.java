@@ -12,7 +12,7 @@ public class StreamOperations {
         List<Integer> mainList= Arrays.asList(-1,1,2,3,4,5,6,5,6,7,8,9);
         StreamOperations sOperation=new StreamOperations();
         sOperation.countMethod(mainList);
-        //sOperation.predicateMethod(mainList);
+        sOperation.predicateMethod(mainList);
         //sOperation.lambdaExp(mainList);
 
 
@@ -25,5 +25,31 @@ public class StreamOperations {
         System.out.println(mainList.stream().skip(5).count());
 
     }
+
+
+    private void predicateMethod(List<Integer> mainList){
+
+        System.out.println("predicateMethod");
+        boolean resGreater50=mainList.stream().anyMatch(new Predicate<Integer>() {
+
+            @Override
+            public boolean test(Integer integer) {
+                return integer>50;
+            }
+        });
+
+        System.out.println("resGreater50 :"+resGreater50);
+        boolean anyLessThan0=mainList.stream().anyMatch(new Predicate<Integer>(){
+            @Override
+            public boolean test(Integer integer){
+                return integer <0;
+            }
+        });
+        System.out.println("anyLessThan0 :"+anyLessThan0);
+
+    }
+
+
+
 
 }
