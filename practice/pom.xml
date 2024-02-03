@@ -17,6 +17,13 @@
       <version>5.2.0</version>
       <scope>compile</scope>
     </dependency>
+
+    <dependency>
+      <groupId>org.jeasy</groupId>
+      <artifactId>easy-random-core</artifactId>
+      <version>4.0.0</version>
+    </dependency>
+
   </dependencies>
   <build>
     <plugins>
