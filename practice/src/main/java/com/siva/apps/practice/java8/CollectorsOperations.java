@@ -27,7 +27,12 @@ public class CollectorsOperations {
 
         //toSet
 
-        
+        Set<Person> femaleList=mainList.stream().filter(p->p.getGender()==Person.Gender.FEMALE).collect(Collectors.toSet());
+
+        System.out.println(femaleList);
+
+
+
         //summarizingInt
 
         //3 method int,accumulate,combine exo ArrayList new,add,addAll
