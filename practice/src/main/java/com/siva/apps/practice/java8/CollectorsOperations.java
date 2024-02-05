@@ -32,6 +32,17 @@ public class CollectorsOperations {
         System.out.println(femaleList);
 
 
+        //toCollection
+
+        //Set<Person> femaleCList=mainList.stream().filter(p->p.getGender()==Person.Gender.FEMALE).collect(Collectors.toCollection(TreeSet::new));
+
+        //System.out.println(femaleCList);
+
+        //joining
+
+        String cities=mainList.stream().map(Person::getCity).collect(Collectors.joining(", "));
+        System.out.println(cities);
+        //averagingInt
 
         //summarizingInt
 
