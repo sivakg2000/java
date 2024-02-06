@@ -4,6 +4,7 @@ import com.siva.apps.practice.java8.bo.Person;
 import org.jeasy.random.EasyRandom;
 
 import java.util.*;
+import java.util.function.DoubleConsumer;
 import java.util.stream.Collectors;
 
 public class CollectorsOperations {
@@ -44,8 +45,13 @@ public class CollectorsOperations {
         System.out.println(cities);
         //averagingInt
 
+
+        double avgAge=mainList.stream().filter(p->p.getGender()==Person.Gender.MALE).collect(Collectors.averagingInt(Person::getAge));
+
+        System.out.println("Avg Male Age:"+avgAge);
         //summarizingInt
 
+      
         //3 method int,accumulate,combine exo ArrayList new,add,addAll
 
         //Customer Collectors int,accumulate,combine
