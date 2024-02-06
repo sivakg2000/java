@@ -51,7 +51,10 @@ public class CollectorsOperations {
         System.out.println("Avg Male Age:"+avgAge);
         //summarizingInt
 
-      
+        IntSummaryStatistics statistics=mainList.stream().filter(p->p.getGender()==Person.Gender.MALE).collect(Collectors.summarizingInt(Person::getAge));
+
+        System.out.println("Avg Male Age IntSummaryStatistics : "+statistics);
+
         //3 method int,accumulate,combine exo ArrayList new,add,addAll
 
         //Customer Collectors int,accumulate,combine
