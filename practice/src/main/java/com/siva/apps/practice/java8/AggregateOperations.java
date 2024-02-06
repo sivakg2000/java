@@ -26,6 +26,9 @@ public class AggregateOperations {
 
         //average
 
+        double maleAvg=mainList.stream().filter(p->p.getGender()== Person.Gender.MALE).mapToInt(Person::getAge).average().orElse(0.0);
+        System.out.println("maleAvg :"+maleAvg);
+
         //max
 
         //min
