@@ -57,6 +57,11 @@ public class CollectorsOperations {
 
         //3 method int,accumulate,combine exo ArrayList new,add,addAll
 
+        List<Person> maleListN=mainList.stream().filter(p->p.getGender()==Person.Gender.MALE).collect(ArrayList::new,ArrayList::add,ArrayList::addAll);
+
+
+        System.out.println("maleListN : "+maleListN);
+
         //Customer Collectors int,accumulate,combine
 
         //groupingBy 1 Arg
