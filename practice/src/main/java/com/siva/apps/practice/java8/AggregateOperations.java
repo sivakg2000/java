@@ -34,7 +34,11 @@ public class AggregateOperations {
         int maleMaxAge=mainList.stream().filter(p->p.getGender()== Person.Gender.MALE).mapToInt(Person::getAge).max().orElse(0);
         System.out.println("maleMaxAge :"+maleMaxAge);
 
-        
+        //min
+
+        int femalMinAge=mainList.stream().filter(p->p.getGender()== Person.Gender.FEMALE).mapToInt(Person::getAge).min().orElse(0);
+        System.out.println("femalMinAge :"+femalMinAge);
+
         //sum
 
 
