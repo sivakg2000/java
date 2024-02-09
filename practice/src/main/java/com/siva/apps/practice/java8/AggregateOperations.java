@@ -41,6 +41,12 @@ public class AggregateOperations {
 
         //sum
 
+        //min
+
+        int femalSumAge=mainList.stream().filter(p->p.getGender()== Person.Gender.FEMALE).mapToInt(Person::getAge).sum();
+        System.out.println("femalSumAge :"+femalSumAge);
+
+
 
         //reduce
         //IntBinaryOperator //maxFemaleAge //lambdaExp minMaleAge //sumFemaleAge
