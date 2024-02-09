@@ -15,7 +15,23 @@ public class JGitExampleWithCommitAndPush {
 
     public static void main(String[] args) {
         // Specify the URL of the remote Git repository
-         
+        String remoteRepoURL = "";
+
+        // Specify the local path where the repository will be cloned
+        String localRepoPath = "";
+
+        // Specify the branch name to switch to
+        String branchNameToSwitch = "";
+
+        // Specify the name of the new branch to create
+        String newBranchName = "";
+
+        String deleteBranchName = "";
+
+        // Specify the Git repository username and password
+        String username = "";
+        String password = "";
+
         System.out.println();
         try {
             // Clone the remote repository with authentication
