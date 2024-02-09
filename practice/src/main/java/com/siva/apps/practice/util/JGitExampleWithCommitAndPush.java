@@ -4,6 +4,7 @@ import org.eclipse.jgit.api.*;
 import org.eclipse.jgit.api.errors.*;
 import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.storage.file.FileRepositoryBuilder;
+import org.eclipse.jgit.transport.RefSpec;
 import org.eclipse.jgit.transport.URIish;
 import org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider;
 
@@ -14,21 +15,8 @@ public class JGitExampleWithCommitAndPush {
 
     public static void main(String[] args) {
         // Specify the URL of the remote Git repository
-        String remoteRepoURL = "REMOTE_REPO_URL";
-
-        // Specify the local path where the repository will be cloned
-        String localRepoPath = "LOCAL_REPO_PATH";
-
-        // Specify the branch name to switch to
-        String branchNameToSwitch = "BRANCH_NAME_TO_SWITCH";
-
-        // Specify the name of the new branch to create
-        String newBranchName = "NEW_BRANCH_NAME";
-
-        // Specify the Git repository username and password
-        String username = "YOUR_USERNAME";
-        String password = "YOUR_PASSWORD";
-
+         
+        System.out.println();
         try {
             // Clone the remote repository with authentication
             Git.cloneRepository()
@@ -42,12 +30,12 @@ public class JGitExampleWithCommitAndPush {
                     .setGitDir(new File(localRepoPath + "/.git"))
                     .build();
 
-            // Checkout a branch
+            /*// Checkout a branch
             try (Git git = new Git(repository)) {
                 git.checkout()
                         .setName(branchNameToSwitch)
                         .call();
-            }
+            }*/
 
             // Switch to a different branch or create a new branch if it doesn't exist
             try (Git git = new Git(repository)) {
@@ -94,11 +82,12 @@ public class JGitExampleWithCommitAndPush {
 
             // Delete a branch if it exists on the remote repository
             try (Git git = new Git(repository)) {
-                String remoteBranchToDelete = "refs/heads/" + newBranchName;
+                String remoteBranchToDelete = "refs/heads/" + deleteBranchName;
 
                 if (git.lsRemote()
                         .setHeads(true)
                         .setRemote(remoteRepoURL)
+                        .setCredentialsProvider(new UsernamePasswordCredentialsProvider(username, password))
                         .call()
                         .stream()
                         .anyMatch(ref -> ref.getName().equals(remoteBranchToDelete))) {
