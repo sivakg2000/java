@@ -56,7 +56,7 @@ public class CommonPrefixTest {
 
         List<String> words = Arrays.asList("p", "prefix", "preposition", "prediction");
         String result=new CommonPrefix().find(words);
-        assertNotEquals("p",result);
+        assertEquals("p",result);
 
 
     }
