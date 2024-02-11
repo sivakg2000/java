@@ -36,15 +36,13 @@ public class AggregateOperations {
 
         //min
 
-        int femalMinAge=mainList.stream().filter(p->p.getGender()== Person.Gender.FEMALE).mapToInt(Person::getAge).min().orElse(0);
-        System.out.println("femalMinAge :"+femalMinAge);
+        int femaleMinAge=mainList.stream().filter(p->p.getGender()== Person.Gender.FEMALE).mapToInt(Person::getAge).min().orElse(0);
+        System.out.println("femaleMinAge :"+femaleMinAge);
 
-        //sum
+        //sum 
 
-        //min
-
-        int femalSumAge=mainList.stream().filter(p->p.getGender()== Person.Gender.FEMALE).mapToInt(Person::getAge).sum();
-        System.out.println("femalSumAge :"+femalSumAge);
+        int femaleSumAge=mainList.stream().filter(p->p.getGender()== Person.Gender.FEMALE).mapToInt(Person::getAge).sum();
+        System.out.println("femaleSumAge :"+femaleSumAge);
 
 
 
