@@ -32,6 +32,17 @@ public class Len5UpperCaseTest {
 
 
     @Test
+    public void find3(){
+        List<String> words = Arrays.asList("apple", "banana", "orange", "kiwi", "grapes");
+        String expResult="STRAWBERRY";
+        List<String> fList=new Len5UpperCase().find(words);
+        assertTrue(fList.contains(expResult));
+
+
+    }
+
+
+    @Test
     public void findEmpty(){
         List<String> words = Collections.emptyList();
         List<String> fList=new Len5UpperCase().find(words);
@@ -39,4 +50,8 @@ public class Len5UpperCaseTest {
 
 
     }
+
+
+
+
 }
