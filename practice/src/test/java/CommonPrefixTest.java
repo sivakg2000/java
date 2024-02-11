@@ -49,4 +49,17 @@ public class CommonPrefixTest {
     }
 
 
+    @Test
+    public void findP(){
+
+
+
+        List<String> words = Arrays.asList("p", "prefix", "preposition", "prediction");
+        String result=new CommonPrefix().find(words);
+        assertNotEquals("p",result);
+
+
+    }
+
+
 }
