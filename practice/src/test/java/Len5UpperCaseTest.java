@@ -33,8 +33,8 @@ public class Len5UpperCaseTest {
 
     @Test
     public void find3(){
-        List<String> words = Arrays.asList("apple", "banana", "orange", "kiwi", "grapes");
-        String expResult="STRAWBERRY";
+        List<String> words = Arrays.asList("apple", "banana", "orange", "kiwi", "grapes","preposition");
+        String expResult="preposition";
         List<String> fList=new Len5UpperCase().find(words);
         assertTrue(fList.contains(expResult));
 
