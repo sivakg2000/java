@@ -50,10 +50,10 @@ public class ConsecIncSubSeqTest {
     @Test
     public void find5(){
 
-        List<Integer> list1 = Arrays.asList(1, 2, 3, 5, 6, 7, 8, 9,10, 11,12,13);
+        List<Integer> list1 = Arrays.asList(1, 2, 3, 5, 6, 7, 8,10, 11,12,13);
         List<List<Integer>> result=new ConsecIncSubSeq().find(list1);
-        List<Integer> expRes= Arrays.asList(5,6,7,8,9,10,11,12,13);
-        System.out.println(result);
+        List<Integer> expRes= Arrays.asList(5, 6, 7, 8);
+        System.out.println(result.get(1));
         Assertions.assertNotEquals(expRes,result.get(1));
     }
 
