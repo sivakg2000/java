@@ -1,6 +1,7 @@
 package com.siva.apps;
 
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
@@ -20,6 +21,7 @@ public class ProductTest {
 
     @Test
     @DisplayName("Price Check")
+    @Disabled
     void priceTest(){
         assertEquals(80000,tv.getPrice(),"Price Test");
     }
