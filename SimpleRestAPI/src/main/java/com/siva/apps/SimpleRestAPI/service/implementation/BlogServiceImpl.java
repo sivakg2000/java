@@ -12,14 +12,14 @@ import org.springframework.stereotype.Service;
 public class BlogServiceImpl implements BlogService {
     private final BlogRepo blogRepo;
 
-    public BlogDao createBlog(BlogDao blogDao){
-        Blog blog=blogDaoToBlog(blogDao);
+    public BlogDao createBlog(BlogDao blogDao) {
+        Blog blog = blogDaoToBlog(blogDao);
         blogRepo.save(blog);
         return blogDao;
     }
 
     private Blog blogDaoToBlog(BlogDao blogDao) {
-        Blog blog=new Blog();
+        Blog blog = new Blog();
         //blog.setContent(blogDao.g);
         return blog;
     }
