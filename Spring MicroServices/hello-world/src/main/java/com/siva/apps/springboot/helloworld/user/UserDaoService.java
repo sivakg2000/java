@@ -14,11 +14,12 @@ import java.util.stream.Collectors;
 public class UserDaoService {
 
     private static List<User> users=new ArrayList<>();
+    private static int usersAutoIncId=0;
 
     static{
-        users.add(new User(1,"Siva", LocalDate.now().minusYears(40)));
-        users.add(new User(2,"Pragatheeswaran", LocalDate.now().minusYears(7)));
-        users.add(new User(3,"Pranav", LocalDate.now().minusYears(3)));
+        users.add(new User(++usersAutoIncId,"Siva", LocalDate.now().minusYears(40)));
+        users.add(new User(++usersAutoIncId,"Pragatheeswaran", LocalDate.now().minusYears(7)));
+        users.add(new User(++usersAutoIncId,"Pranav", LocalDate.now().minusYears(3)));
     }
 
     public List<User> findAll(){
@@ -30,18 +31,22 @@ public class UserDaoService {
         return userById.orElse(null);
     }
 
-    public void saveUser(User userInfo){
+    public User saveUser(User userInfo){
         if(userInfo!=null){
+                    userInfo.setId(++usersAutoIncId);
             users.add(userInfo);
         }
+        return userInfo;
     }
 
-    public void updateUserById(User userInfo){
-        users=users.stream().filter(u -> !Objects.equals(u.getId(), userInfo.getId())).collect(Collectors.toList());
+    public User updateUser(User userInfo,int id){
+        users=users.stream().filter(u -> !Objects.equals(u.getId(), id)).collect(Collectors.toList());
         users.add(userInfo);
+        return userInfo;
     }
-    public void deleteUser(int id){
+    public List<User> deleteUser(int id){
         users=users.stream().filter(u -> u.getId()!=id).collect(Collectors.toList());
+        return  users;
     }
 
 
