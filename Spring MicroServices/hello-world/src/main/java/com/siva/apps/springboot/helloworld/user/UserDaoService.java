@@ -41,6 +41,7 @@ public class UserDaoService {
 
     public User updateUser(User userInfo,int id){
         users=users.stream().filter(u -> !Objects.equals(u.getId(), id)).collect(Collectors.toList());
+        userInfo.setId(id);
         users.add(userInfo);
         return userInfo;
     }
