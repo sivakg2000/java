@@ -29,6 +29,7 @@ public class UserDaoService {
     public User findById(int id){
         Optional<User> userById=users.stream().filter(u -> u.getId()==id).findFirst();
         return userById.orElse(null);
+        //return users.stream().filter(u -> u.getId()==id).findFirst().get();
     }
 
     public User saveUser(User userInfo){
@@ -46,7 +47,8 @@ public class UserDaoService {
         return userInfo;
     }
     public List<User> deleteUser(int id){
-        users=users.stream().filter(u -> u.getId()!=id).collect(Collectors.toList());
+        //users=users.stream().filter(u -> u.getId()!=id).collect(Collectors.toList());
+        users.removeIf(u -> u.getId()==id);
         return  users;
     }
 

@@ -1,7 +1,12 @@
 package com.siva.apps.springboot.helloworld.user;
 
+import com.siva.apps.springboot.helloworld.exception.UserNotFoundException;
+import jakarta.validation.Valid;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -19,13 +24,19 @@ public class UserResource {
 
     @GetMapping(path = "/users/{id}")
     public User getUser(@PathVariable int id){
+        User findUser=this.service.findById(id);
+        if(findUser==null){
+            throw new UserNotFoundException("id :"+id);
+        }
         return this.service.findById(id);
     }
 
 
     @PostMapping(path = "/users")
-    public User addUser(@RequestBody User newUser){
-        return this.service.saveUser(newUser);
+    public ResponseEntity<User> addUser(@Valid @RequestBody User newUser){
+        this.service.saveUser(newUser);
+        URI location= ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newUser.getId()).toUri();
+        return ResponseEntity.created(location).build();
     }
 
     @PutMapping(path = "/users/{id}")
