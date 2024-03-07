@@ -3,12 +3,15 @@ package com.siva.apps.springboot.helloworld.user;
 import com.siva.apps.springboot.helloworld.exception.UserNotFoundException;
 import jakarta.validation.Valid;
 import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;
+
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
 
 @RestController
 public class UserResource {
@@ -30,6 +33,9 @@ public class UserResource {
             throw new UserNotFoundException("id :"+id);
         }
         EntityModel<User> entityModel=EntityModel.of(findUser);
+
+        WebMvcLinkBuilder link=linkTo(methodOn(this.getClass()).getAllUsers());
+        entityModel.add(link.withRel("all-users"));
         return entityModel;
     }
 
