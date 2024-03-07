@@ -2,6 +2,7 @@ package com.siva.apps.springboot.helloworld.user;
 
 import com.siva.apps.springboot.helloworld.exception.UserNotFoundException;
 import jakarta.validation.Valid;
+import org.springframework.hateoas.EntityModel;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -23,12 +24,13 @@ public class UserResource {
     }
 
     @GetMapping(path = "/users/{id}")
-    public User getUser(@PathVariable int id){
+    public EntityModel<User> getUser(@PathVariable int id){
         User findUser=this.service.findById(id);
         if(findUser==null){
             throw new UserNotFoundException("id :"+id);
         }
-        return this.service.findById(id);
+        EntityModel<User> entityModel=EntityModel.of(findUser);
+        return entityModel;
     }
 
 
