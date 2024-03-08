@@ -1,5 +1,6 @@
 package com.siva.apps.springboot.helloworld.user;
 
+import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -17,6 +18,7 @@ import java.time.LocalDate;
 @Setter
 @ToString
 //@JsonIgnoreProperties({"age","city"})
+@JsonFilter("UserFilter")
 public class User {
     private Integer id;
 
@@ -27,7 +29,7 @@ public class User {
     @JsonProperty("birth_date")
     private LocalDate birthDate;
 
-    @JsonIgnore
+    //@JsonIgnore
     private  int age;
 
     private  String city;

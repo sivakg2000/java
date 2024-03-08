@@ -1,10 +1,15 @@
 package com.siva.apps.springboot.helloworld.user;
 
+import com.fasterxml.jackson.databind.ser.BeanPropertyFilter;
+import com.fasterxml.jackson.databind.ser.FilterProvider;
+import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
+import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
 import com.siva.apps.springboot.helloworld.exception.UserNotFoundException;
 import jakarta.validation.Valid;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.json.MappingJacksonValue;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -22,12 +27,15 @@ public class UserResource {
     }
 
     @GetMapping(path = "/users")
-    public List<User> getAllUsers(){
-        return this.service.findAll();
+    public MappingJacksonValue getAllUsers(){
+        MappingJacksonValue mappingJacksonValue=new MappingJacksonValue(this.service.findAll());
+        mappingJacksonValue.setFilters(new SimpleFilterProvider().addFilter("UserFilter", SimpleBeanPropertyFilter.filterOutAllExcept("id","name")));
+        return mappingJacksonValue;
     }
 
     @GetMapping(path = "/users/{id}")
     public EntityModel<User> getUser(@PathVariable int id){
+
         User findUser=this.service.findById(id);
         if(findUser==null){
             throw new UserNotFoundException("id :"+id);
