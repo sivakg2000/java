@@ -37,9 +37,7 @@ public class UserResource {
     public EntityModel<User> getUser(@PathVariable int id){
 
         User findUser=this.service.findById(id);
-        if(findUser==null){
-            throw new UserNotFoundException("id :"+id);
-        }
+
         EntityModel<User> entityModel=EntityModel.of(findUser);
 
         WebMvcLinkBuilder link=linkTo(methodOn(this.getClass()).getAllUsers());
