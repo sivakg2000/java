@@ -13,6 +13,17 @@ public class CourseJDBCCommandLineRunner implements CommandLineRunner {
     private CourseJDBCRepository courseJDBCRepository;
     @Override
     public void run(String... args) throws Exception {
-        courseJDBCRepository.insert();
+        courseJDBCRepository.insert(new Course(1,"Learn AWS","Siva K"));
+        courseJDBCRepository.insert(new Course(2,"Fundamentals of AWS","Pragatheeswaran S"));
+        courseJDBCRepository.insert(new Course(3,"Advance Services of AWS","Pranav S"));
+
+
+        courseJDBCRepository.deleteById(1);
+
+        courseJDBCRepository.updateById(new Course(3,"Advance Services of AWS-Updated","Pranav S-Updated"));
+
+        Course sel=courseJDBCRepository.findById(3);
+
+        System.out.println(sel);
     }
 }
