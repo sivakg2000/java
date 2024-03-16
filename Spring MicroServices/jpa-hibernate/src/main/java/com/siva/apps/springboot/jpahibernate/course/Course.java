@@ -1,7 +1,15 @@
 package com.siva.apps.springboot.jpahibernate.course;
 
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import org.hibernate.annotations.Collate;
+
 public class Course {
+
     private int id;
+
     private String name;
     private String author;
 
