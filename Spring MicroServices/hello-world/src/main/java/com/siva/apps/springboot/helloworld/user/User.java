@@ -5,22 +5,16 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.siva.apps.springboot.helloworld.post.Post;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Size;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.util.List;
 
 
-@Entity
+@Entity(name = "user_details")
 @AllArgsConstructor
 @Getter
 @Setter
@@ -43,7 +37,7 @@ public class User {
 
     private  String city;
 
-    /*@OneToMany(fetch = FetchType.LAZY)
-    private List<Post> posts;*/
+    @OneToMany(fetch = FetchType.LAZY)
+    private List<Post> posts;
 
 }
