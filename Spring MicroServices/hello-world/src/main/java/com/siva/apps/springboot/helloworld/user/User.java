@@ -4,6 +4,11 @@ import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.siva.apps.springboot.helloworld.post.Post;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -12,7 +17,10 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.time.LocalDate;
+import java.util.List;
 
+
+@Entity
 @AllArgsConstructor
 @Getter
 @Setter
@@ -20,6 +28,7 @@ import java.time.LocalDate;
 //@JsonIgnoreProperties({"age","city"})
 @JsonFilter("UserFilter")
 public class User {
+    @Id
     private Integer id;
 
     @Size(min = 3,message = "Username should min 3 characters")
@@ -33,5 +42,8 @@ public class User {
     private  int age;
 
     private  String city;
+
+    /*@OneToMany(fetch = FetchType.LAZY)
+    private List<Post> posts;*/
 
 }

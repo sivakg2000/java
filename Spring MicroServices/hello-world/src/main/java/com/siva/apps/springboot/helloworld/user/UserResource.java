@@ -1,10 +1,9 @@
 package com.siva.apps.springboot.helloworld.user;
 
-import com.fasterxml.jackson.databind.ser.BeanPropertyFilter;
-import com.fasterxml.jackson.databind.ser.FilterProvider;
 import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
 import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
 import com.siva.apps.springboot.helloworld.exception.UserNotFoundException;
+import com.siva.apps.springboot.helloworld.repository.UserRepository;
 import jakarta.validation.Valid;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
@@ -15,20 +14,23 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
 
 @RestController
 public class UserResource {
-    private final UserDaoService service;
 
-    public UserResource(UserDaoService service) {
-        this.service = service;
+    private  final UserRepository userRepository;
+
+    public UserResource( UserRepository userRepository) {
+        this.userRepository = userRepository;
+
     }
 
     @GetMapping(path = "/users")
     public MappingJacksonValue getAllUsers(){
-        MappingJacksonValue mappingJacksonValue=new MappingJacksonValue(this.service.findAll());
+        MappingJacksonValue mappingJacksonValue=new MappingJacksonValue(this.userRepository.findAll());
         mappingJacksonValue.setFilters(new SimpleFilterProvider().addFilter("UserFilter", SimpleBeanPropertyFilter.filterOutAllExcept("id","name")));
         return mappingJacksonValue;
     }
@@ -36,9 +38,13 @@ public class UserResource {
     @GetMapping(path = "/users/{id}")
     public EntityModel<User> getUser(@PathVariable int id){
 
-        User findUser=this.service.findById(id);
+        Optional<User> findUser=this.userRepository.findById(id);
 
-        EntityModel<User> entityModel=EntityModel.of(findUser);
+        if(findUser.isEmpty()){
+            throw new UserNotFoundException("User not exist - "+id);
+        }
+
+        EntityModel<User> entityModel=EntityModel.of(findUser.get());
 
         WebMvcLinkBuilder link=linkTo(methodOn(this.getClass()).getAllUsers());
         entityModel.add(link.withRel("all-users"));
@@ -48,19 +54,19 @@ public class UserResource {
 
     @PostMapping(path = "/users")
     public ResponseEntity<User> addUser(@Valid @RequestBody User newUser){
-        this.service.saveUser(newUser);
+        this.userRepository.save(newUser);
         URI location= ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newUser.getId()).toUri();
         return ResponseEntity.created(location).build();
     }
 
     @PutMapping(path = "/users/{id}")
     public User updateUser(@PathVariable int id,@RequestBody User updateUser){
-        return this.service.updateUser(updateUser,id);
+        return this.userRepository.save(updateUser);
     }
 
 
     @DeleteMapping(path = "/users/{id}")
-    public List<User> deleteUser(@PathVariable int id){
-        return this.service.deleteUser(id);
+    public void deleteUser(@PathVariable int id){
+        this.userRepository.deleteById(id);
     }
 }
