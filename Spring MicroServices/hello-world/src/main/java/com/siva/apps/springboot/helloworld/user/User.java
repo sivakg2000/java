@@ -15,6 +15,7 @@ import java.util.List;
 
 
 @Entity(name = "user_details")
+@NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
