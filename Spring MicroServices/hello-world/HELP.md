@@ -28,5 +28,5 @@ The following items has to be fixed. As per course, It's not working. Will have 
 
 * i18n Support
 * User get by id - Support with HAL - Error
-* Data JPA Error
+* Data JPA Error - Get by Id, Update by ID
 
