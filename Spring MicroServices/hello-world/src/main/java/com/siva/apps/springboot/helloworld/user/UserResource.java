@@ -36,7 +36,7 @@ public class UserResource {
     }
 
     @GetMapping(path = "/users/{id}")
-    public EntityModel<User> getUser(@PathVariable int id){
+    public User getUser(@PathVariable int id){
 
         Optional<User> findUser=this.userRepository.findById(id);
 
@@ -44,11 +44,12 @@ public class UserResource {
             throw new UserNotFoundException("User not exist - "+id);
         }
 
-        EntityModel<User> entityModel=EntityModel.of(findUser.get());
+        /*EntityModel<User> entityModel=EntityModel.of(findUser.get());
 
         WebMvcLinkBuilder link=linkTo(methodOn(this.getClass()).getAllUsers());
         entityModel.add(link.withRel("all-users"));
-        return entityModel;
+        return entityModel;*/
+        return findUser.get();
     }
 
 
@@ -67,6 +68,11 @@ public class UserResource {
 
     @DeleteMapping(path = "/users/{id}")
     public void deleteUser(@PathVariable int id){
+        Optional<User> findUser=this.userRepository.findById(id);
+
+        if(findUser.isEmpty()){
+            throw new UserNotFoundException("User not exist - "+id);
+        }
         this.userRepository.deleteById(id);
     }
 }
