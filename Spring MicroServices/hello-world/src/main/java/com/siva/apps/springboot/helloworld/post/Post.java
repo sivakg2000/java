@@ -5,12 +5,10 @@ import com.siva.apps.springboot.helloworld.user.User;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 @Entity
+@NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
@@ -21,7 +19,6 @@ public class Post {
 
     @ManyToOne
     private User user;
-
 
     private String description;
 }
