@@ -36,7 +36,7 @@ public class UserResource {
     }
 
     @GetMapping(path = "/users/{id}")
-    public User getUser(@PathVariable int id){
+    public EntityModel<User> getUser(@PathVariable int id){
 
         Optional<User> findUser=this.userRepository.findById(id);
 
@@ -44,12 +44,13 @@ public class UserResource {
             throw new UserNotFoundException("User not exist - "+id);
         }
 
-        /*EntityModel<User> entityModel=EntityModel.of(findUser.get());
+        System.out.println(findUser.get());
+        EntityModel<User> entityModel=EntityModel.of(findUser.get());
 
         WebMvcLinkBuilder link=linkTo(methodOn(this.getClass()).getAllUsers());
         entityModel.add(link.withRel("all-users"));
-        return entityModel;*/
-        return findUser.get();
+        return entityModel;
+        //return findUser.get();
     }
 
 
@@ -62,7 +63,16 @@ public class UserResource {
 
     @PutMapping(path = "/users/{id}")
     public User updateUser(@PathVariable int id,@RequestBody User updateUser){
+        //return this.userRepository.save(updateUser);
+        Optional<User> findUser=this.userRepository.findById(id);
+        if(findUser.isEmpty() ){
+            throw new UserNotFoundException("User not exist - " + id);
+        }else if (id!=updateUser.getId()){
+            throw new UserNotFoundException("User mismatch - " + id+" <=> "+updateUser.getId());
+        }
+
         return this.userRepository.save(updateUser);
+
     }
 
 
