@@ -18,7 +18,7 @@ public class Post {
     private Integer id;
 
     @ManyToOne
-    private User user;
+    private User userInfo;
 
     private String description;
 }

@@ -35,8 +35,16 @@ public class UserResource {
         return mappingJacksonValue;
     }
 
+
     @GetMapping(path = "/users/{id}")
-    public EntityModel<User> getUser(@PathVariable int id){
+    public MappingJacksonValue getUser(@PathVariable int id){
+        MappingJacksonValue mappingJacksonValue=new MappingJacksonValue(this.userRepository.findById(id));
+        mappingJacksonValue.setFilters(new SimpleFilterProvider().addFilter("UserFilter", SimpleBeanPropertyFilter.filterOutAllExcept("id","name","age","birth_date","city","posts")));
+        return mappingJacksonValue;
+    }
+
+    @GetMapping(path = "/users1/{id}")
+    public EntityModel<User> getUser1(@PathVariable int id){
 
         Optional<User> findUser=this.userRepository.findById(id);
 
@@ -68,7 +76,7 @@ public class UserResource {
         if(findUser.isEmpty() ){
             throw new UserNotFoundException("User not exist - " + id);
         }else if (id!=updateUser.getId()){
-            throw new UserNotFoundException("User mismatch - " + id+" <=> "+updateUser.getId());
+            throw new UserNotFoundException("User mismatch - Path id : " + id+", Body Id : "+updateUser.getId());
         }
 
         return this.userRepository.save(updateUser);
