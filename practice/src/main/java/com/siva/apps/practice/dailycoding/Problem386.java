@@ -2,6 +2,9 @@ package com.siva.apps.practice.dailycoding;
 
 
 import java.util.HashMap;
+import java.util.Map;
+import java.util.TreeMap;
+import java.util.stream.Collectors;
 
 /**
  * Given a string, sort it in decreasing order based on the frequency of characters.
@@ -11,15 +14,24 @@ import java.util.HashMap;
  */
 public class Problem386 {
     public static void main(String[] args){
-        String str="tweeeett";
-        String result=new Problem386().getSortDecFreChar(str);
+        String str="tweeeetttt";
         System.out.println("Input  : "+str);
-        System.out.println("Output : "+result);
+        System.out.println("Output 1 : "+new Problem386().getSortDecFreChar(str));
+        System.out.println("Output 2 : "+new Problem386().getSortDecFreCharLegacy(str));
 
     }
 
     String getSortDecFreChar(String s){
+        Map<Character, Long> charMap=s.chars().mapToObj(a->(char)a).collect(Collectors.groupingBy(ch->ch,Collectors.counting()));
+        Map<Character, Long> sortedMap = new HashMap<Character, Long>(charMap);
+        StringBuilder stringBuilder=new StringBuilder();
+        sortedMap.keySet().forEach(ch->stringBuilder.append(String.valueOf(ch).repeat(sortedMap.get(ch).intValue())));
+
+        return stringBuilder.toString();
+    }
+    String getSortDecFreCharLegacy(String s){
         HashMap<Character, Integer> charMap=new HashMap<>();
+
         s.chars().mapToObj(a->(char)a).forEach(character -> {
             int iVal=1;
             if(charMap.containsKey(character)){
@@ -31,11 +43,9 @@ public class Problem386 {
         StringBuilder stringBuilder=new StringBuilder();
         charMap.keySet().forEach(ch->{
             int n=charMap.get(ch);
-            for(int i=0;i<n;i++){
-                stringBuilder.append(ch);
-            }
-        });
-        System.out.println("\n");
+            stringBuilder.append(String.valueOf(ch).repeat(n));
+
+        }); 
         return stringBuilder.toString();
     }
 
