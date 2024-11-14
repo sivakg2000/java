@@ -1,9 +1,7 @@
 package com.siva.apps.practice.dailycoding;
 
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -16,12 +14,39 @@ public class Problem386 {
     public static void main(String[] args){
         String str="tweeeetttt";
         System.out.println("Input  : "+str);
-        System.out.println("Output 1 : "+new Problem386().getSortDecFreChar(str));
-        System.out.println("Output 2 : "+new Problem386().getSortDecFreCharLegacy(str));
+
+        System.out.println("Output 1 : "+new Problem386().getSortDecFreChar1(str));
+        System.out.println("Output 2 : "+new Problem386().getSortDecFreChar2(str));
+        System.out.println("Output 3 : "+new Problem386().getSortDecFreCharLegacy(str));
+
 
     }
 
-    String getSortDecFreChar(String s){
+
+    public static String getSortDecFreChar1(String s) {
+        // Step 1: Count the frequency of each character
+        HashMap<Character, Integer> frequencyMap = new HashMap<>();
+        for (char c : s.toCharArray()) {
+            frequencyMap.put(c, frequencyMap.getOrDefault(c, 0) + 1);
+        }
+
+        // Step 2: Create a list of characters and sort it by frequency
+        List<Map.Entry<Character, Integer>> sortedEntries = new ArrayList<>(frequencyMap.entrySet());
+        Collections.sort(sortedEntries, (a, b) -> b.getValue() - a.getValue());
+
+        // Step 3: Build the sorted string based on frequency
+        StringBuilder result = new StringBuilder();
+        for (Map.Entry<Character, Integer> entry : sortedEntries) {
+            char c = entry.getKey();
+            int count = entry.getValue();
+            for (int i = 0; i < count; i++) {
+                result.append(c);
+            }
+        }
+
+        return result.toString();
+    }
+    String getSortDecFreChar2(String s){
         Map<Character, Long> charMap=s.chars().mapToObj(a->(char)a).collect(Collectors.groupingBy(ch->ch,Collectors.counting()));
         Map<Character, Long> sortedMap = new HashMap<Character, Long>(charMap);
         StringBuilder stringBuilder=new StringBuilder();
@@ -45,7 +70,7 @@ public class Problem386 {
             int n=charMap.get(ch);
             stringBuilder.append(String.valueOf(ch).repeat(n));
 
-        }); 
+        });
         return stringBuilder.toString();
     }
 
