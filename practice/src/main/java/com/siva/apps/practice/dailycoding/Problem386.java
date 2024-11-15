@@ -32,16 +32,14 @@ public class Problem386 {
 
         // Step 2: Create a list of characters and sort it by frequency
         List<Map.Entry<Character, Integer>> sortedEntries = new ArrayList<>(frequencyMap.entrySet());
-        Collections.sort(sortedEntries, (a, b) -> b.getValue() - a.getValue());
+        sortedEntries.sort((a, b) -> b.getValue() - a.getValue());
 
         // Step 3: Build the sorted string based on frequency
         StringBuilder result = new StringBuilder();
         for (Map.Entry<Character, Integer> entry : sortedEntries) {
             char c = entry.getKey();
             int count = entry.getValue();
-            for (int i = 0; i < count; i++) {
-                result.append(c);
-            }
+            result.append(String.valueOf(c).repeat(Math.max(0, count)));
         }
 
         return result.toString();
