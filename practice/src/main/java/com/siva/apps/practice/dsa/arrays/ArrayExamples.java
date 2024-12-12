@@ -21,9 +21,21 @@ public class ArrayExamples {
         arrayExamples.insertElement(-1,1000,new int[10]);
         arrayExamples.insertElement(0,1000,new int[10]);
         arrayExamples.insertElement(2,1000,new int[10]);
-        arrayExamples.insertElement(33,1000,new int[10]); */
+        arrayExamples.insertElement(33,1000,new int[10]);
 
         arrayExamples.duplicateZeros(new int[]{1, 0, 2, 3, 0, 4, 5, 0});
+
+        arrayExamples.merge(new int[]{1,2,3,0,0,0},3,new int[]{2,5,6},3);
+        arrayExamples.merge(new int[]{1},1,new int[]{},0);
+        arrayExamples.merge(new int[]{0},0,new int[]{1},1);
+
+        arrayExamples.leftShitArrayWithInit(5,new int[10]);
+        arrayExamples.leftShitArrayWithInit(0,new int[10]);
+
+        arrayExamples.leftShitArrayWithInit(2,new int[10]); */
+
+        arrayExamples.removeElement(new int[]{3,2,2,3},3);
+        arrayExamples.removeElement(new int[]{0,1,2,2,3,0,4,2},2);
 
 
     }
@@ -109,18 +121,71 @@ public class ArrayExamples {
         System.out.println("Before :"+ Arrays.toString(arr));
         for(int i=0;i<arr.length;i++){
             if(arr[i]==0){
-                shitArray(i, arr);
+                rightShitArray(i, arr);
                 i++;
             }
         }
         System.out.println("Result :"+ Arrays.toString(arr));
     }
-    private void shitArray(int position, int[] arr){
+    private void rightShitArray(int position, int[] arr){
 
         for (int i = arr.length-1; i >=position ; i--) {
             if(i<arr.length-1)
                 arr[i+1] = arr[i];
 
         }
+    }
+
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
+        System.out.println("Before "+ Arrays.toString(nums1)+", "+Arrays.toString(nums2));
+        for (int i=m;i<nums1.length;i++){
+            nums1[i]=nums2[i-m];
+        }
+        Arrays.sort(nums1);
+        System.out.println("After "+ Arrays.toString(nums1));
+    }
+
+
+    private void leftShitArrayWithInit(int position, int[] arr){
+
+        int cPosition = 0;
+        for (int i = 0; i < 5; i++) {
+            arr[i] = i + 1;
+            cPosition++;
+        }
+
+        System.out.println("Before "+ Arrays.toString(arr)+", "+position);
+        for (int i = position;i<arr.length;i++) {
+            if(i>0)
+                arr[i-1] = arr[i];
+        }
+        System.out.println("After "+ Arrays.toString(arr));
+    }
+
+
+
+    public int removeElement(int[] nums, int val) {
+        System.out.println("Before "+ Arrays.toString(nums)+", S :"+val);
+        int count=0;
+        for (int num : nums) {
+            if (num != val) {
+                count++;
+            }
+        }
+        int[] newArray=new int[count];
+        int nCount=0;
+        for (int num : nums) {
+            if (num != val) {
+                newArray[nCount] = num;
+                nCount++;
+            }
+        }
+        Arrays.sort(newArray);
+        //Arrays.sort(nums);
+        for(int i=0;i<nums.length;i++){
+            if(i<newArray.length)
+                nums[i]=newArray[i];
+        } 
+        return nCount;
     }
 }
