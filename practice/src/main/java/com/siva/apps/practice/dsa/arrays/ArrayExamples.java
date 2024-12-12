@@ -15,13 +15,16 @@ public class ArrayExamples {
 
         int[] numbers3={-4,-1,0,3,10};
         int[] result3=arrayExamples.sortedSquares(numbers3);
-        System.out.println("sortedSquares "+ Arrays.toString(numbers3) +", Result :"+ Arrays.toString(result3));*/
+        System.out.println("sortedSquares "+ Arrays.toString(numbers3) +", Result :"+ Arrays.toString(result3));
 
- 
+
         arrayExamples.insertElement(-1,1000,new int[10]);
         arrayExamples.insertElement(0,1000,new int[10]);
         arrayExamples.insertElement(2,1000,new int[10]);
-        arrayExamples.insertElement(33,1000,new int[10]);
+        arrayExamples.insertElement(33,1000,new int[10]); */
+
+        arrayExamples.duplicateZeros(new int[]{1, 0, 2, 3, 0, 4, 5, 0});
+
 
     }
 
@@ -100,5 +103,24 @@ public class ArrayExamples {
 
 
         System.out.println("Result :"+ Arrays.toString(nums));
+    }
+
+    public void duplicateZeros(int[] arr) {
+        System.out.println("Before :"+ Arrays.toString(arr));
+        for(int i=0;i<arr.length;i++){
+            if(arr[i]==0){
+                shitArray(i, arr);
+                i++;
+            }
+        }
+        System.out.println("Result :"+ Arrays.toString(arr));
+    }
+    private void shitArray(int position, int[] arr){
+
+        for (int i = arr.length-1; i >=position ; i--) {
+            if(i<arr.length-1)
+                arr[i+1] = arr[i];
+
+        }
     }
 }
