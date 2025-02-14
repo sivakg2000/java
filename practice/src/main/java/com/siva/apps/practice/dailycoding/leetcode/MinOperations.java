@@ -88,8 +88,7 @@ public class MinOperations {
         }
         return nS;
     }
-
-
+    
     public int[] add(int[] s,int e){
         int[] nS=new int[s.length+1];
         for(int i=0;i<s.length;i++){
